@@ -1,0 +1,2 @@
+# stardust
+Opensource Microservice Template
