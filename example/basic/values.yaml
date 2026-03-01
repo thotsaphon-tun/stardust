@@ -38,3 +38,16 @@ topologySpreadConstraints:
       - pod-template-hash
 env:
   HELLO: world
+envFrom:
+  - configMapRef:
+      name: '{{ include "stardust.name" $ }}-cm'
+  - secretRef:
+      name: '{{ include "stardust.name" $ }}-secret'
+configMaps:
+  - name: '{{ include "stardust.name" $ }}-cm'
+    data:
+      hello: "world"
+secrets:
+  - name: '{{ include "stardust.name" $ }}-secret'
+    stringData:
+      plaintext: helloWorld

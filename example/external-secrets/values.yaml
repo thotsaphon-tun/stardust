@@ -1,0 +1,5 @@
+externalSecrets:
+  - name: '{{ include "stardust.name" $ }}-ext-secret'
+    dataFrom:
+    - extract:
+        key: /path/to/secret

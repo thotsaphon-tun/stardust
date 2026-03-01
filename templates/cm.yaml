@@ -1,0 +1,11 @@
+{{- range .Values.configMaps }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ tpl .name $ | quote }}
+{{- with .data }}
+data:
+  {{- tpl (toYaml .) $ | nindent 2 }}
+{{- end }}
+{{- end }}

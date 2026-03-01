@@ -52,6 +52,10 @@ spec:
               value: {{ $v | quote }}
           {{- end }}
           {{- end }}
+          {{- with .Values.envFrom }}
+          envFrom:
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
           {{- with .Values.lifecycle }}
           lifecycle:
             {{- toYaml . | nindent 12 }}

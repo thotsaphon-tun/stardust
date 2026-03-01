@@ -1,0 +1,16 @@
+extraManifests:
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: '{{ include "stardust.name" $ }}-extra-cm'
+    data:
+      extra-data: "value"
+  - |
+    apiVersion: v1
+    kind: Secret
+    type: Opaque
+    metadata:
+      name: '{{ include "stardust.name" $ }}-extra-secret'
+    data:
+      plaintext: Zm9vYmFy
+      templated: '{{ print "foobar" | upper | b64enc }}'
